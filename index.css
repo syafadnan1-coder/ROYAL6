@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+/* الخطوط العربية */
+html, body {
+  font-family: 'Cairo', 'Tajawal', system-ui, sans-serif;
+}
+
+/* breakpoint مخصص للشاشات الصغيرة جداً (الجوال) */
+@media (min-width: 400px) {
+  .xs\:inline { display: inline; }
+  .xs\:flex { display: flex; }
+  .xs\:block { display: block; }
+}
+
+/* تحسين السكرول على الجوال */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* إخفاء scrollbar في الأماكن الأفقية */
+.scrollbar-thin {
+  scrollbar-width: thin;
+}
+.scrollbar-thin::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+/* استخدام اللون الأساسي مع كل العناصر الداكنة الافتراضية */
+.royal-dark-bg {
+  background-color: var(--royal-primary, #1E3A8A);
+}
+
+/* تحسينات تجاوب على شاشات الجوال */
+@media (max-width: 640px) {
+  /* تكبير الأزرار في الجوال للسهولة */
+  button, a {
+    min-height: 36px;
+  }
+  
+  /* تكبير حجم الخط الأساسي على الموبايل */
+  body { font-size: 14px; }
+  
+  /* تقليل المسافات في الجوال */
+  .max-w-7xl {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
