@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شهاداتنا - رويال للبلاستيك ومستلزمات السباكة</title>
+    <style>
+        :root {
+            --royal-blue: #0a1f3f;
+            --royal-gold: #c8a84e;
+            --royal-gold-light: #e0c878;
+            --royal-white: #fafaf8;
+            --royal-cream: #f5f0e8;
+            --royal-dark: #060e1a;
+            --sidebar-bg: #0d1b33;
+            --text-dark: #1a1a1a;
+            --text-light: #f0f0f0;
+            --shadow-royal: 0 4px 20px rgba(10, 31, 63, 0.25);
+            --shadow-gold: 0 6px 28px rgba(200, 168, 78, 0.3);
+            --transition-smooth: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Tajawal', 'Cairo', 'Helvetica Neue', Arial, sans-serif;
+            background: #f0ece4;
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+            padding-top: 85px;
+            /* مساحة للهيدر الثابت */;
+        }
+
+        /* ========== الهيدر الثابت ========== */
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background:rgba(18,5,177,0.95) ;
+            box-shadow: 0 4px 24px rgba;
+            height: 85px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            transition: all var(--transition-smooth);
+            border-bottom: 2px solid var(--royal-gold);
+        }
+
+        .fixed-header::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg,
+                    transparent, var(--royal-gold), var(--royal-gold-light), var(--royal-gold), transparent);
+            opacity: 0.10;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* اللوجو */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: transform var(--transition-smooth);
+        }
+        .logo-container:hover {
+            transform: scale(1.03);
+        }
+
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: contain;
+            border: 3px solid var(--royal-gold);
+            box-shadow: 0 0 20px rgba(200, 168, 78, 0.5), 0 0 0 4px rgba(200, 168, 78, 0.15);
+            background: #fff;
+            padding: 3px;
+            transition: all var(--transition-smooth);
+            flex-shrink: 0;
+        }
+        .logo-container:hover .logo-img {
+            box-shadow: 0 0 30px rgba(200, 168, 78, 0.8), 0 0 0 8px rgba(200, 168, 78, 0.2);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .logo-text .brand-name {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+        }
+        .logo-text .brand-sub {
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--royal-gold-light);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* أيقونة التصنيفات (ثلاث شرط - هامبرغر) */
+        .hamburger-btn {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+            width: 48px;
+            height: 48px;
+            background: transparent;
+            border: 2px solid rgba(200, 168, 78, 0.5);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all var(--transition-smooth);
+            position: relative;
+            z-index: 1001;
+            padding: 10px;
+        }
+        .hamburger-btn:hover {
+            border-color: var(--royal-gold);
+            background: rgba(200, 168, 78, 0.08);
+            box-shadow: 0 0 18px rgba(200, 168, 78, 0.35);
+        }
+        .hamburger-btn:active {
+            transform: scale(0.94);
+            transition: 0.1s;
+        }
+
+        .hamburger-line {
+            display: block;
+            width: 26px;
+            height: 3px;
+            background: var(--royal-gold);
+            border-radius: 4px;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            transform-origin: center;
+        }
+        .hamburger-btn.active .hamburger-line:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+            background: #fff;
+        }
+        .hamburger-btn.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+        .hamburger-btn.active .hamburger-line:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+            background: #fff;
+        }
+
+        .hamburger-label {
+            font-size: 0.6rem;
+            color: var(--royal-gold-light);
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-align: center;
+            margin-top: 2px;
+            transition: color var(--transition-smooth);
+        }
+
+        /* ========== السايدبار (قائمة التصنيفات) ========== */
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.65);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition-smooth);
+            backdrop-filter: blur(2px);
+        }
+        .sidebar-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .classification-sidebar {
+            position: fixed;
+            top: 85px;
+            right: -380px;
+            width: 340px;
+            max-width: 85vw;
+            height: calc(100vh - 85px);
+            background: var(--sidebar-bg);
+            z-index: 1000;
+            transition: right var(--transition-smooth);
+            box-shadow: -8px 0 30px rgba(0, 0, 0, 0.6);
+            border-left: 2px solid var(--royal-gold);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            padding: 0;
+        }
+        .classification-sidebar.open {
+            right: 0;
+        }
+
+        .sidebar-header {
+            padding: 20px 18px;
+            border-bottom: 1px solid rgba(200, 168, 78, 0.3);
+            text-align: center;
+            background: rgba(200, 168, 78, 0.05);
+        }
+        .sidebar-header h3 {
+            color: var(--royal-gold);
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: 0.5px;
+        }
+        .sidebar-header .icon-classify {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .sidebar-nav {
+            list-style: none;
+            padding: 8px 0;
+            flex: 1;
+        }
+        .sidebar-nav li {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+        .sidebar-nav li a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 20px;
+            color: #c8d6e5;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            cursor: pointer;
+            border-right: 3px solid transparent;
+        }
+        .sidebar-nav li a:hover,
+        .sidebar-nav li a.active {
+            background: rgba(200, 168, 78, 0.1);
+            color: #fff;
+            border-right-color: var(--royal-gold);
+            padding-right: 28px;
+        }
+        .sidebar-nav li a .cat-icon {
+            font-size: 1.4rem;
+            flex-shrink: 0;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(200, 168, 78, 0.12);
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        .sidebar-nav li a:hover .cat-icon,
+        .sidebar-nav li a.active .cat-icon {
+            background: rgba(200, 168, 78, 0.3);
+            box-shadow: 0 0 14px rgba(200, 168, 78, 0.4);
+        }
+
+        .sidebar-badge {
+            background: var(--royal-gold);
+            color: #0a1f3f;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-right: auto;
+            letter-spacing: 0.5px;
+        }
+
+        /* ========== المحتوى الرئيسي ========== */
+        .main-content {
+            padding: 24px 16px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+            transition: all var(--transition-smooth);
+        }
+
+        .page-title-section {
+            text-align: center;
+            margin-bottom: 32px;
+            padding: 28px 20px;
+            background: linear-gradient(135deg, #fff 0%, #fdf9f2 100%);
+            border-radius: 20px;
+            box-shadow: var(--shadow-royal);
+            border: 1px solid rgba(200, 168, 78, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        .page-title-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle, rgba(200, 168, 78, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .page-title-section h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--royal-blue);
+            margin: 0 0 6px;
+            letter-spacing: 0.5px;
+            position: relative;
+            z-index: 1;
+        }
+        .page-title-section .subtitle {
+            font-size: 1rem;
+            color: #6b5e3e;
+            font-weight: 500;
+            position: relative;
+            z-index: 1;
+        }
+        .gold-divider {
+            width: 80px;
+            height: 4px;
+            background: var(--royal-gold);
+            margin: 12px auto;
+            border-radius: 4px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* قسم الشهادات */
+        .certificates-section {
+            margin-bottom: 40px;
+        }
+        .section-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            padding: 14px 18px;
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+            border-right: 5px solid var(--royal-gold);
+            cursor: default;
+        }
+        .section-label .section-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+        .section-label h2 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--royal-blue);
+            margin: 0;
+        }
+        .section-label .count-badge {
+            background: var(--royal-gold);
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.8rem;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-right: auto;
+            white-space: nowrap;
+        }
+
+        /* شبكة الشهادات */
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        /* كرت الشهادة */
+        .certificate-card {
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            transition: all var(--transition-smooth);
+            border: 1px solid #e8e3d8;
+            display: flex;
+            flex-direction: column;
+        }
+        .certificate-card:hover {
+            box-shadow: var(--shadow-gold);
+            transform: translateY(-4px);
+            border-color: var(--royal-gold-light);
+        }
+        .certificate-card.highlight {
+            border: 2px solid var(--royal-gold);
+            box-shadow: 0 0 20px rgba(200, 168, 78, 0.2);
+        }
+
+        .cert-image-wrapper {
+            position: relative;
+            width: 100%;
+            max-height: 420px;
+            overflow: auto;
+            background: #f9f7f2;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            cursor: zoom-in;
+            transition: background 0.3s;
+            padding: 8px;
+            /* شريط تمرير أنيق */
+            scrollbar-width: thin;
+            scrollbar-color: #c8a84e #f0ece4;
+        }
+        .cert-image-wrapper::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .cert-image-wrapper::-webkit-scrollbar-track {
+            background: #f0ece4;
+            border-radius: 6px;
+        }
+        .cert-image-wrapper::-webkit-scrollbar-thumb {
+            background: #c8a84e;
+            border-radius: 6px;
+        }
+        .cert-image-wrapper:hover {
+            background: #fefcf8;
+        }
+
+        /* الصورة بمقاسها الحقيقي */
+        .cert-image {
+            display: block;
+            /* العرض والارتفاع تلقائيان للحفاظ على المقاس الحقيقي */
+            width: auto;
+            height: auto;
+            max-width: none;
+            /* لا تقييد للمقاس */
+            object-fit: none;
+            /* عرض الصورة بمقاسها الأصلي */
+            image-rendering: auto;
+            transition: transform 0.3s;
+            flex-shrink: 0;
+            min-width: 280px;
+            border-radius: 4px;
+        }
+        .cert-image-wrapper:hover .cert-image {
+            transform: scale(1.02);
+        }
+
+        /* زووم عند النقر */
+        .cert-image-wrapper.zoomed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 2000;
+            background: rgba(0, 0, 0, 0.92);
+            cursor: zoom-out;
+            max-height: 100vh;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0;
+        }
+        .cert-image-wrapper.zoomed .cert-image {
+            max-height: 90vh;
+            max-width: 95vw;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 10px 50px rgba(200, 168, 78, 0.4);
+            transform: none;
+        }
+        .cert-image-wrapper.zoomed:hover .cert-image {
+            transform: none;
+        }
+        .zoom-hint {
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.75);
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            letter-spacing: 0.5px;
+            z-index: 5;
+            white-space: nowrap;
+        }
+        .cert-image-wrapper.zoomed .zoom-hint {
+            opacity: 0;
+        }
+        .cert-image-wrapper:hover .zoom-hint {
+            background: rgba(200, 168, 78, 0.9);
+            color: #0a1f3f;
+            font-weight: 700;
+        }
+
+        .cert-info {
+            padding: 16px 18px;
+            border-top: 1px solid #efe9db;
+            flex-shrink: 0;
+        }
+        .cert-info h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--royal-blue);
+            margin: 0 0 4px;
+        }
+        .cert-info .issuer {
+            font-size: 0.85rem;
+            color: #7a6e55;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .cert-info .issuer::before {
+            content: '🏛️';
+            font-size: 0.9rem;
+        }
+        .cert-info .cert-date {
+            font-size: 0.75rem;
+            color: #999;
+            margin-top: 4px;
+        }
+
+        /* ========== الفوتر ========== */
+        .site-footer {
+            background: var(--royal-blue);
+            color: #c8d6e5;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.85rem;
+            border-top: 3px solid var(--royal-gold);
+            letter-spacing: 0.3px;
+        }
+        .site-footer strong {
+            color: var(--royal-gold-light);
+        }
+
+        /* ========== زر العودة للأعلى ========== */
+        .scroll-top-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 900;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: var(--royal-gold);
+            color: #0a1f3f;
+            border: none;
+            cursor: pointer;
+            font-size: 1.4rem;
+            font-weight: 700;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+            transition: all var(--transition-smooth);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .scroll-top-btn.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .scroll-top-btn:hover {
+            background: #fff;
+            box-shadow: 0 6px 24px rgba(200, 168, 78, 0.6);
+            transform: translateY(-3px);
+        }
+
+        /* ========== رسالة الصور الفعلية ========== */
+        .placeholder-notice {
+            background: #fffbe6;
+            border: 2px dashed var(--royal-gold);
+            border-radius: 12px;
+            padding: 14px 20px;
+            margin-bottom: 24px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #6b5e3e;
+            font-weight: 500;
+        }
+        .placeholder-notice .icon-info {
+            font-size: 1.3rem;
+            margin-left: 4px;
+        }
+
+        /* ========== تجاوب مع الشاشات ========== */
+        @media (max-width: 768px) {
+            .fixed-header {
+                height: 70px;
+                padding: 0 10px;
+            }
+            body {
+                padding-top: 70px;
+            }
+            .classification-sidebar {
+                top: 70px;
+                height: calc(100vh - 70px);
+                right: -340px;
+                width: 300px;
+                max-width: 80vw;
+            }
+            .logo-img {
+                width: 44px;
+                height: 44px;
+                border-width: 2px;
+                padding: 2px;
+            }
+            .logo-text .brand-name {
+                font-size: 0.9rem;
+            }
+            .logo-text .brand-sub {
+                font-size: 0.6rem;
+            }
+            .hamburger-btn {
+                width: 40px;
+                height: 40px;
+                gap: 5px;
+                border-radius: 10px;
+                padding: 8px;
+            }
+            .hamburger-line {
+                width: 22px;
+                height: 2.5px;
+            }
+            .hamburger-btn.active .hamburger-line:nth-child(1) {
+                transform: translateY(7.5px) rotate(45deg);
+            }
+            .hamburger-btn.active .hamburger-line:nth-child(3) {
+                transform: translateY(-7.5px) rotate(-45deg);
+            }
+            .page-title-section h1 {
+                font-size: 1.4rem;
+            }
+            .certificates-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .cert-image-wrapper {
+                max-height: 320px;
+            }
+            .cert-image {
+                min-width: 240px;
+            }
+            .section-label h2 {
+                font-size: 1.1rem;
+            }
+            .sidebar-nav li a {
+                padding: 13px 16px;
+                font-size: 0.9rem;
+            }
+        }
+        @media (max-width: 400px) {
+            .fixed-header {
+                height: 60px;
+                padding: 0 8px;
+            }
+            body {
+                padding-top: 60px;
+            }
+            .classification-sidebar {
+                top: 60px;
+                height: calc(100vh - 60px);
+                right: -300px;
+                width: 260px;
+                max-width: 75vw;
+            }
+            .logo-img {
+                width: 36px;
+                height: 36px;
+            }
+            .logo-text .brand-name {
+                font-size: 0.78rem;
+            }
+            .hamburger-btn {
+                width: 36px;
+                height: 36px;
+                gap: 4px;
+                padding: 7px;
+                border-radius: 8px;
+            }
+            .hamburger-line {
+                width: 20px;
+                height: 2px;
+            }
+            .hamburger-btn.active .hamburger-line:nth-child(1) {
+                transform: translateY(6px) rotate(45deg);
+            }
+            .hamburger-btn.active .hamburger-line:nth-child(3) {
+                transform: translateY(-6px) rotate(-45deg);
+            }
+            .page-title-section h1 {
+                font-size: 1.2rem;
+            }
+            .cert-image-wrapper {
+                max-height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== الهيدر الثابت ==================== -->
+    <header class="fixed-header" id="fixedHeader">
+        <!-- الجهة اليسرى: اللوجو -->
+        <div class="header-left">
+            <div class="logo-container" title="رويال للانابيب  البلاستيكية ومستلزمات السباكة">
+                <!-- صورة اللوجو - استبدل src بمسار اللوجو الفعلي -->
+                <img
+                class="logo-img"
+                src="./WhatsApp Image 2026-06-27 at 6.22.25 AM.jpeg"
+                alt="شعار رويال للبلاستيك"
+                width="80"
+                height="80"
+                >
+                <div class="logo-text">
+                    <span class="brand-name">رويال للانابيب البلاستيك</span>
+                    <span class="brand-sub">ومستلزمات السباكة</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- الجهة اليمنى: أيقونة التصنيفات (ثلاث شرط) -->
+        <div class="header-right">
+            <button class="hamburger-btn" id="hamburgerBtn"
+            aria-label="فتح قائمة التصنيفات"
+            title="تصنيفات الشهادات">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+        <span class="hamburger-label">تصنيفات</span>
+    </div>
+</header>
+
+<!-- ==================== أوفرلي السايدبار ==================== -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- ==================== السايدبار - قائمة التصنيفات ==================== -->
+<aside class="classification-sidebar" id="classificationSidebar">
+    <div class="sidebar-header">
+        <span class="icon-classify">📋</span>
+        <h3>تصنيفات الشهادات</h3>
+    </div>
+    <ul class="sidebar-nav">
+        <li>
+            <a href="https://royalpvsplas.com/" class="hover:text-[var(--royal-blue)] transition">الرئيسية</a>
+                
+            </a>
+        </li>
+        <li>
+            <a data-category="universities" onclick="filterCertificates('universities', this)">
+                <span class="cat-icon">🎓</span>
+                شهادات الجامعات
+                <span class="sidebar-badge">جامعات</span>
+            </a>
+        </li>
+        <li>
+            <a data-category="factories" onclick="filterCertificates('factories', this)">
+                <span class="cat-icon">🏭</span>
+                شهادات المصانع
+                <span class="sidebar-badge">مصانع</span>
+            </a>
+        </li>
+        <li>
+            <a data-category="safety" onclick="filterCertificates('safety', this)">
+                <span class="cat-icon">🛡️</span>
+                شهادات السلامة والجودة
+                <span class="sidebar-badge">سلامة</span>
+            </a>
+        </li>
+    </ul>
+</aside>
+
+<!-- ==================== المحتوى الرئيسي ==================== -->
+<main class="main-content" id="mainContent">
+
+    <!-- عنوان الصفحة -->
+    <div class="page-title-section">
+        <h1>📜 شهاداتنا واعتماداتنا</h1>
+        <div class="gold-divider"></div>
+        <p class="subtitle">شهادات معتمدة من الجامعات والمصانع - رويال للبلاستيك ومستلزمات السباكة</p>
+    </div>
+
+   
+    <!-- ========== قسم: شهادات الجامعات ========== -->
+    <section class="certificates-section" data-category="universities" id="sectionUniversities">
+        <div class="section-label">
+            <span class="section-icon">🎓</span>
+            <h2>شهادات الجامعات</h2>
+            <span class="count-badge">٣ شهادات</span>
+        </div>
+        <div class="certificates-grid">
+
+            <!-- شهادة جامعية ١ -->
+            <div class="certificate-card highlight" data-category="universities">
+                <div class="cert-image-wrapper" onclick="toggleZoom(this)" title="اضغط للتكبير">
+                    <!-- صورة بمقاسها الحقيقي - استبدل src بمسار الصورة الفعلي -->
+                    <img
+                    class="cert-image"
+                    src="WhatsApp Image 2026-06-29 at 12.25.27 AM (1).jpeg"
+                    alt="شهادة جامعة صنعاء"
+                    loading="lazy"
+                    >
+                    <span class="zoom-hint">🔍 اضغط للتكبير</span>
+                </div>
+                <div class="cert-info">
+                    <h4>شهادة اعتماد أكاديمي - جامعة صنعاء</h4>
+                    <p class="issuer">جامعة صنعاء - كلية الهندسة</p>
+                    <p class="cert-date">📅 تاريخ الإصدار: ٢٠٢٣</p>
+                </div>
+            </div>
+
+            <!-- شهادة جامعية ٢ -->
+            <div class="certificate-card" data-category="universities">
+                <div class="cert-image-wrapper" onclick="toggleZoom(this)" title="اضغط للتكبير">
+                    <img
+                    class="cert-image"
+                    src="WhatsApp Image 2026-06-29 at 12.25.25 AM.jpeg"
+                    alt="شهادة جامعة صنعاء"
+                    loading="lazy"
+                    >
+                    <span class="zoom-hint">🔍 اضغط للتكبير</span>
+                </div>
+                <div class="cert-info">
+                    <h4>شهادة  ممنوحة من عملائنا  </h4>
+                    <p class="issuer">انطباعات شخصيات هامة وزوار للمصنع</p>
+                    <p class="cert-date">📅 تاريخ الإصدار: 2023</p>
+                </div>
+            </div>
+
+            <!-- شهادة جامعية ٣ -->
+            <div class="certificate-card" data-category="universities">
+                <div class="cert-image-wrapper" onclick="toggleZoom(this)" title="اضغط للتكبير">
+                    <img
+                    class="cert-image"
+                    src="WhatsApp Image 2026-06-29 at 12.25.25 AM.jpeg"
+                    alt="شكر وتقدير من عملانا"
+                   
+                    loading="lazy"
+                    >
+                    <span class="zoom-hint">🔍 اضغط للتكبير</span>
+                </div>
+                <div class="cert-info">
+                    <h4>شهادة فحص مخبري - جامعة صنعاء</h4>
+                    <p class="issuer">جامعة الإسكندرية - معمل المواد</p>
+                    <p class="cert-date">📅 تاريخ الإصدار: ٢٠٢٤</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== قسم: شهادات المصانع ========== -->
+    <section class="certificates-section" data-category="factories" id="sectionFactories">
+        <div class="section-label">
+            <span class="section-icon">🏭</span>
+            <h2>شهادات المصانع</h2>
+            <span class="count-badge">٣ شهادات</span>
+        </div>
+        <div class="certificates-grid">
+
+            <!-- شهادة مصنع ١ -->
+            <div class="certificate-card highlight" data-category="factories">
+                <div class="cert-image-wrapper" onclick="toggleZoom(this)" title="اضغط للتكبير">
+                    <img
+                    class="cert-image"
+                    src="WhatsApp Image 2026-06-29 at 12.25.29 AM.jpeg"
+                    alt="شهادة اعتماد مصنع"
+                    width="720"
+                    height="520"
+                    loading="lazy"
+                    >
+                    <span class="zoom-hint">🔍 اضغط للتكبير</span>
+                </div>
+                <div class="cert-info">
+                    <h4>شهادة اعتماد مصنع - الهيئة العامة اليمنية للتصنيع</h4>
+                    <p class="issuer">الهيئة العامة للتصنيع</p>
+                    <p class="cert-date">📅 تاريخ الإصدار: ٢٠٢٣</p>
+                </div>
+            </div>
+
+            <!-- شهادة مصنع ٢ -->
+            <div class="certificate-card" data-category="factories">
+                <div class="cert-image-wrapper" onclick="toggleZoom(this)" title="اضغط للتكبير">
+                    <img
+                    class="cert-image"
+                    src="WhatsApp Image 2026-06-29 at 12.25.28 AM.jpeg"
+                    alt="شهادة إنتاج وتصدير"
+                   
+                    loading="lazy"
+                    >
+                    <span class="zoom-hint">🔍 اضغط للتكبير</span>
+                </div>
+                <div class="cert-info">
+                    <h4>شهادة إنتاج وتصدير - اتحاد المصانع العربية</h4>
+                    <p class="issuer">اتحاد المصانع العربية</p>
+                    <p class="cert-date">📅 تاريخ الإصدار: ٢٠٢٢</p>
+                </div>
+            </div>
+
+            <!-- شهادة مصنع ٣ -->
+            <div class="certificate-card" data-category="factories">
+                <div class="cert-image-wrapper" onclick="toggleZoom(this)" title="اضغط للتكبير">
+                    <img
+                    class="cert-image"
+                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='500' viewBox='0 0 700 500'%3E%3Crect width='700' height='500' fill='%23fefefb' rx='6'/%3E%3Crect x='26' y='26' width='648' height='448' fill='none' stroke='%231b4f72' stroke-width='4' rx='3'/%3E%3Ccircle cx='350' cy='115' r='48' fill='%23eaf2f8' stroke='%231b4f72' stroke-width='2.5'/%3E%3Ctext x='350' y='128' text-anchor='middle' font-size='38'%3E⚙️%3C/text%3E%3Ctext x='350' y='210' text-anchor='middle' font-size='20' fill='%231b4f72' font-weight='bold' font-family='serif'%3Eشهادة جودة إنتاج%3C/text%3E%3Ctext x='350' y='248' text-anchor='middle' font-size='15' fill='%23444' font-family='sans-serif'%3Eمصنع رويال للبلاستيك%3C/text%3E%3Cline x1='200' y1='278' x2='500' y2='278' stroke='%23c8a84e' stroke-width='1'/%3E%3Ctext x='350' y='325' text-anchor='middle' font-size='13' fill='%23555' font-family='sans-serif'%3Eمطابقة مواصفات الإنتاج القياسية%3C/text%3E%3C/svg%3E"
+                    alt="شهادة جودة إنتاج"
+                    width="700"
+                    height="500"
+                    loading="lazy"
+                    >
+                    <span class="zoom-hint">🔍 اضغط للتكبير</span>
+                </div>
+                <div class="cert-info">
+                    <h4>شهادة جودة إنتاج - مصنع رويال</h4>
+                    <p class="issuer">هيئة المواصفات والمقاييس</p>
+                    <p class="cert-date">📅 تاريخ الإصدار: ٢٠٢٤</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== قسم: شهادات السلامة والجودة ========== -->
+    <section class="certificates-section" data-category="safety" id="sectionSafety">
+        <div class="section-label">
+            <span class="section-icon">🛡️</span>
+            <h2>شهادات السلامة والجودة</h2>
+            <span class="count-badge">٢ شهادتان</span>
+        </div>
+        <div class="certificates-grid">
+
+            <!-- شهادة سلامة ١ -->
+            <div class="certificate-card highlight" data-category="safety">
+                <div class="cert-image-wrapper" onclick="toggleZoom(this)" title="اضغط للتكبير">
+                    <img
+                    class="cert-image"
+                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='500' viewBox='0 0 700 500'%3E%3Crect width='700' height='500' fill='%23fefefe' rx='7'/%3E%3Crect x='30' y='30' width='640' height='440' fill='none' stroke='%2327ae60' stroke-width='5' rx='4'/%3E%3Ccircle cx='350' cy='120' r='52' fill='%23eafaf1' stroke='%2327ae60' stroke-width='3'/%3E%3Ctext x='350' y='134' text-anchor='middle' font-size='40'%3E🛡️%3C/text%3E%3Ctext x='350' y='215' text-anchor='middle' font-size='22' fill='%2327ae60' font-weight='bold' font-family='serif'%3Eشهادة سلامة المنتجات%3C/text%3E%3Ctext x='350' y='255' text-anchor='middle' font-size='15' fill='%23444' font-family='sans-serif'%3Eهيئة السلامة الوطنية%3C/text%3E%3Cline x1='190' y1='285' x2='510' y2='285' stroke='%2327ae60' stroke-width='1.5'/%3E%3Ctext x='350' y='330' text-anchor='middle' font-size='14' fill='%23555' font-family='sans-serif'%3Eمنتجات آمنة ومطابقة للمواصفات%3C/text%3E%3Ctext x='350' y='355' text-anchor='middle' font-size='14' fill='%23555' font-family='sans-serif'%3Eالخاصة بمستلزمات السباكة%3C/text%3E%3C/svg%3E"
+                    alt="شهادة سلامة المنتجات"
+                    width="700"
+                    height="500"
+                    loading="lazy"
+                    >
+                    <span class="zoom-hint">🔍 اضغط للتكبير</span>
+                </div>
+                <div class="cert-info">
+                    <h4>شهادة سلامة المنتجات - هيئة السلامة الوطنية</h4>
+                    <p class="issuer">هيئة السلامة الوطنية</p>
+                    <p class="cert-date">📅 تاريخ الإصدار: ٢٠٢٣</p>
+                </div>
+            </div>
+
+            <!-- شهادة جودة ٢ -->
+            <div class="certificate-card" data-category="safety">
+                <div class="cert-image-wrapper" onclick="toggleZoom(this)" title="اضغط للتكبير">
+                    <img
+                    class="cert-image"
+                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='680' height='500' viewBox='0 0 680 500'%3E%3Crect width='680' height='500' fill='%23fdfcfa' rx='5'/%3E%3Crect x='24' y='24' width='632' height='452' fill='none' stroke='%23c8a84e' stroke-width='4' rx='3'/%3E%3Ctext x='340' y='100' text-anchor='middle' font-size='46'%3E⭐%3C/text%3E%3Ctext x='340' y='180' text-anchor='middle' font-size='21' fill='%230a1f3f' font-weight='bold' font-family='serif'%3Eشهادة آيزو 9001%3C/text%3E%3Ctext x='340' y='218' text-anchor='middle' font-size='15' fill='%23444' font-family='sans-serif'%3Eنظام إدارة الجودة%3C/text%3E%3Cline x1='180' y1='248' x2='500' y2='248' stroke='%23c8a84e' stroke-width='1.2'/%3E%3Ctext x='340' y='300' text-anchor='middle' font-size='14' fill='%23555' font-family='sans-serif'%3Eرويال للبلاستيك ومستلزمات السباكة%3C/text%3E%3Ctext x='340' y='325' text-anchor='middle' font-size='14' fill='%23555' font-family='sans-serif'%3Eحاصلة على شهادة الآيزو%3C/text%3E%3C/svg%3E"
+                    alt="شهادة آيزو"
+                    width="680"
+                    height="500"
+                    loading="lazy"
+                    >
+                    <span class="zoom-hint">🔍 اضغط للتكبير</span>
+                </div>
+                <div class="cert-info">
+                    <h4>شهادة آيزو 9001 - نظام إدارة الجودة</h4>
+                    <p class="issuer">منظمة المقاييس الدولية</p>
+                    <p class="cert-date">📅 تاريخ الإصدار: ٢٠٢٤</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- ==================== الفوتر ==================== -->
+<footer class="site-footer">
+    © ٢٠٢٤ <strong>رويال للبلاستيك ومستلزمات السباكة</strong> - جميع الحقوق محفوظة | شهاداتنا من الجامعات والمصانع المعتمدة
+</footer>
+
+<!-- ==================== زر العودة للأعلى ==================== -->
+<button class="scroll-top-btn" id="scrollTopBtn" title="العودة للأعلى" aria-label="العودة للأعلى">
+    ↑
+</button>
+
+<!-- ==================== الجافاسكريبت ==================== -->
+<script>
+    (function() {
+        // ========== العناصر ==========
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const sidebar = document.getElementById('classificationSidebar');
+        const overlay = document.getElementById('sidebarOverlay');
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+        const mainContent = document.getElementById('mainContent');
+        const allCertCards = document.querySelectorAll('.certificate-card');
+        const allSections = document.querySelectorAll('.certificates-section');
+        const sidebarLinks = document.querySelectorAll('.sidebar-nav li a');
+
+        // ========== فتح/إغلاق السايدبار ==========
+        function openSidebar() {
+            sidebar.classList.add('open');
+            overlay.classList.add('open');
+            hamburgerBtn.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSidebar() {
+            sidebar.classList.remove('open');
+            overlay.classList.remove('open');
+            hamburgerBtn.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        hamburgerBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            if (sidebar.classList.contains('open')) {
+                closeSidebar();
+            } else {
+                openSidebar();
+            }
+        });
+
+        overlay.addEventListener('click', closeSidebar);
+
+        // إغلاق السايدبار عند النقر على رابط
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                // تأخير بسيط للإغلاق بعد تنفيذ الفلترة
+                setTimeout(closeSidebar, 250);
+            });
+        });
+
+        // إغلاق السايدبار بمفتاح Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && sidebar.classList.contains('open')) {
+                closeSidebar();
+            }
+            // إغلاق الزووم بمفتاح Escape
+            if (e.key === 'Escape') {
+                const zoomedWrapper = document.querySelector('.cert-image-wrapper.zoomed');
+                if (zoomedWrapper) {
+                    zoomedWrapper.classList.remove('zoomed');
+                    document.body.style.overflow = '';
+                }
+            }
+        });
+
+        // ========== تصفية الشهادات ==========
+        function filterCertificates(category, clickedLink) {
+            // تحديث الروابط النشطة
+            sidebarLinks.forEach(l => l.classList.remove('active'));
+            if (clickedLink) {
+                clickedLink.classList.add('active');
+            }
+
+            if (category === 'all') {
+                // إظهار جميع الأقسام والبطاقات
+                allSections.forEach(section => {
+                    section.style.display = '';
+                });
+                allCertCards.forEach(card => {
+                    card.style.display = '';
+                });
+            } else {
+                // إظهار القسم المطلوب فقط
+                allSections.forEach(section => {
+                    const sectionCat = section.getAttribute('data-category');
+                    if (sectionCat === category) {
+                        section.style.display = '';
+                    } else {
+                        section.style.display = 'none';
+                    }
+                });
+                // إظهار البطاقات داخل القسم الظاهر
+                allCertCards.forEach(card => {
+                    const cardCat = card.getAttribute('data-category');
+                    if (cardCat === category) {
+                        card.style.display = '';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }
+
+            // تمرير سلس للمحتوى
+            mainContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // تعريض الدالة globally
+        window.filterCertificates = filterCertificates;
+
+        // ========== زووم الصور ==========
+        function toggleZoom(wrapper) {
+
+            const isZoomed = wrapper.classList.contains('zoomed');
+            // إغلاق أي زووم مفتوح
+            document.querySelectorAll('.cert-image-wrapper.zoomed').forEach(w => {
+                w.classList.remove('zoomed');
+            });
+            if (!isZoomed) {
+                wrapper.classList.add('zoomed');
+                document.body.style.overflow = 'hidden';
+                // تمرير الصورة المكبرة إلى المنظر
+                wrapper.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+        window.toggleZoom = toggleZoom;
+
+        // إغلاق الزووم بالنقر خارج الصورة في وضع الزووم
+        document.addEventListener('click', function(e) {
+            const zoomedWrapper = document.querySelector('.cert-image-wrapper.zoomed');
+            if (zoomedWrapper && !zoomedWrapper.contains(e.target)) {
+                zoomedWrapper.classList.remove('zoomed');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // ========== زر العودة للأعلى ==========
+        function handleScroll() {
+            const scrollY = window.scrollY || window.pageYOffset;
+            if (scrollY > 500) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        }
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+
+        scrollTopBtn.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // ========== إغلاق السايدبار عند النقر خارجه على المحتوى ==========
+        document.addEventListener('click', function(e) {
+            if (sidebar.classList.contains('open') &&
+                !sidebar.contains(e.target) &&
+                !hamburgerBtn.contains(e.target)) {
+                closeSidebar();
+            }
+        });
+
+        // ========== تهيئة أولية ==========
+        handleScroll();
+
+        console.log('✅ صفحة شهادات رويال للبلاستيك ومستلزمات السباكة جاهزة');
+        console.log('📜 الصور تُعرض بمقاسها الحقيقي - اضغط على أي صورة للتكبير');
+        console.log('📋 أيقونة التصنيفات (ثلاث شرط) في الهيدر لتصفية الشهادات');
+    })();
+</script>
+</body>
+</html>
